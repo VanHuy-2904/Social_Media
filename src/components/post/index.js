@@ -40,7 +40,7 @@ const Post = ({ posts }) => {
         [like.postId]: like.data,
       }));
     });
-    socket.on("new-comment", (comment) => {
+    socket.on("new-comment", (comment) => { 
       if (comment.data.length === undefined) {
         setComments((prevComments) => ({
           ...prevComments,

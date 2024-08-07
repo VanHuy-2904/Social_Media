@@ -37,8 +37,9 @@ export default function Detail() {
       document.body.style.overflow = "auto";
     }
   }, [modal]);
+  console.log(userData.live === undefined);
   return (
-    <div className="h-full m-auto">
+    <div className="h-full w-full m-auto">
       <div className={`flex-col ${modal && "opacity-25"} `}>
         <div className="w-full h-full bg-white h-[500px]">
           <div className="h-[430px] w-full relative">
@@ -49,7 +50,7 @@ export default function Detail() {
             />
             <div className="w-[130px] h-[130px] rounded-full absolute bottom-6 left-6 border-4 border-white flex-col">
               <img
-                className="w-full h-full rounded-full"
+                className="w-full h-full rounded-full border-2 border-black"
                 src={userData.image}
                 alt=""
               />
@@ -92,7 +93,7 @@ export default function Detail() {
                 </div>
                 <p className="">
                   {" "}
-                  {userData.live !== ""
+                  {userData.from !== ""
                     ? `Đến từ ${userData.from}`
                     : "Chưa cập nhật"}
                 </p>

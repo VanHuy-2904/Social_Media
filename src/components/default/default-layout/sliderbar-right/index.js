@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../Context/appContext";
 import Message from "../../../message";
 
@@ -7,11 +7,20 @@ export default function SliderRight() {
   const [showMessage, setShowMessage] = useState(false);
   const [userMessage, setUserMessage] = useState([]);
   const [count, setCount] = useState(1);
+  const [formConversation, setFormConversation] = useState({
+    senderId: userData._id,
+    receiverId: userMessage._id,
+  });
+ 
   const handleClick = (user) => {
     if (!userMessage.includes(user)) {
       setUserMessage((prevMessages) => [...prevMessages, user]);
     }
     setShowMessage(true);
+  };
+
+  const handleCloseMess = (index) => {
+    setUserMessage(userMessage.filter((_, i) => i !== index));
   };
   if (loading) {
     return (
@@ -57,12 +66,15 @@ export default function SliderRight() {
         <div className="mt-4">
           {userMessage.map((user, index) => (
             <div
-              className={`fixed bottom-0 right-[${
-                (index + 1) * 200
-              }px] bg-white h-[320px] rounded-md w-[250px] shadow-gray-600 shadow-lg border-2`}
+              className="fixed bottom-0 bg-white h-[380px] rounded-md w-[300px] shadow-gray-600 shadow-lg border-2"
               key={index}
+              style={{ right: `${index * 320}px` }}
             >
-              <Message user={user} />
+              <Message
+                user={user}
+                handleCloseMess={handleCloseMess}
+                index={index}
+              />
             </div>
           ))}
         </div>

@@ -216,9 +216,10 @@ const PostUser = ({ posts }) => {
           item.user._id === id && (
             <div className="bg-white w-full p-3 mb-5 mb-4" key={index}>
               <div className="flex">
-                <div className="rounded-full w-9 h-9 mr-2 ml-1">
+                <div className="rounded-full w-[40px] h-[40px] mr-2 ml-1">
                   <img
-                    src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp"
+                    className="rounded-full w-full h-full mr-2 ml-1"
+                    src={item.user.image}
                     alt=""
                   />
                 </div>
@@ -420,7 +421,7 @@ const PostUser = ({ posts }) => {
                         <li className="flex mb-3" key={index}>
                           <img
                             className="rounded-full w-10 h-10 mr-2 ml-1 object-cover"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQssqDqtb8e2Xu3B44Nxoir1bFp2o4dq_VouQ&s"
+                            src={itemComment.user.image}
                             alt=""
                           />
 
